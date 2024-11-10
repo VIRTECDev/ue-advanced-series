@@ -8,6 +8,7 @@
 
 
 // Base game pick up class
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPickupCollected);
 
 UCLASS(Abstract)
 class UNREALADVANCEDSERIES_API ADZPickUpActor : public AActor
@@ -17,6 +18,8 @@ class UNREALADVANCEDSERIES_API ADZPickUpActor : public AActor
 public:	
 	// Sets default values for this actor's properties
 	ADZPickUpActor();
+
+	FOnPickupCollected OnPickupColllected;
 
 protected:
 	// Called when the game starts or when spawned
@@ -44,6 +47,10 @@ protected:
 
 	UFUNCTION(BlueprintCallable, Category = "Pickup params")
 	void CodeHandleAbsorbing(float InputValue, FVector ActorPosition);
+
+
+	UFUNCTION(BlueprintCallable, Category = "Delegate")
+	void CallPickupCollected();
 
 public:	
 	// Called every frame

@@ -56,6 +56,11 @@ void ADZPickUpActor::CodeHandleAbsorbing(float InputValue, FVector ActorPosition
 	PickupMeshComp->SetWorldScale3D(NewScale);
 }
 
+void ADZPickUpActor::CallPickupCollected()
+{
+	OnPickupColllected.Broadcast();
+}
+
 // Called every frame
 void ADZPickUpActor::Tick(float DeltaTime)
 {
